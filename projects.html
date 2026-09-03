@@ -1,1 +1,44 @@
-<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Projects | Andre Kurniawan Tirthajaya</title><link rel="stylesheet" href="style.css"></head><body><header><div class="wrap nav"><a class="logo" href="index.html">AKT<span>.</span></a><nav><a href="index.html">Home</a><a href="biografi.html">Biografi</a><a href="skills.html">Skills</a><a href="projects.html">Projects</a><a href="achievements.html">Achievements</a><a href="career.html">Karier</a><a href="contact.html">Contact</a></nav></div></header><main class="page"><div class="wrap"><div class="sectionTitle"><p class="eyebrow">03 / PROJECTS</p><h1>Project & <span>Tugas</span></h1><p class="text">Beberapa tugas dan praktikum yang pernah dikerjakan selama mempelajari Sistem Komputer.</p></div><div class="projects"><article class="project"><img src="project-pcb.png"><div class="projectBody"><span class="projectNo">PROJECT 01</span><h3>Perancangan PCB Minimum System</h3><p>Perancangan layout PCB menggunakan software desain elektronika, termasuk penyusunan komponen dan jalur pada PCB.</p><div class="tags"><span>KiCad</span><span>PCB Design</span></div></div></article><article class="project"><img src="project-visitor.png"><div class="projectBody"><span class="projectNo">PROJECT 02</span><h3>Sistem Penghitung Pengunjung</h3><p>Membuat rangkaian berbasis Arduino untuk menghitung jumlah pengunjung menggunakan sensor. Hasil ditampilkan melalui LCD dan dilengkapi LED serta buzzer.</p><div class="tags"><span>Arduino</span><span>Sensor</span><span>LCD</span></div></div></article></div></div></main><footer><div class="wrap"><span>© 2026 Andre Kurniawan Tirthajaya</span><span>E-Portfolio Draft</span></div></footer></body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Projects | Andre Kurniawan Tirthajaya</title><link rel="stylesheet" href="style.css"></head>
+<body><header><div class="wrap nav"><a class="logo" href="index.html">Portfolio<span>.</span></a><nav><a href="index.html">Home</a><a href="biografi.html">Biography</a><a href="skills.html">Skills</a><a class="active" href="projects.html">Projects</a><a href="achievements.html">Achievements</a><a href="career.html">Career</a><a href="contact.html">Contact</a></nav></div></header>
+<main class="page"><div class="wrap"><div class="sectionTitle"><p class="eyebrow">03 / PROJECTS</p><h1>Selected <span>Projects</span></h1><p class="text">Project yang pernah dikerjakan selama proses belajar. Klik project untuk melihat deskripsi lengkapnya.</p></div>
+<div class="projectGrid">
+<article class="projectCard" onclick="openModal('pcb')"><img src="project-pcb.png" alt="PCB Minimum System project"><div class="projectInfo"><span class="projectNo">PROJECT 01</span><h3>PCB Minimum System</h3><div class="tags"><span>KiCad</span><span>PCB Design</span></div></div></article>
+<article class="projectCard" onclick="openModal('visitor')"><img src="project-visitor.png" alt="Arduino Visitor Counter project"><div class="projectInfo"><span class="projectNo">PROJECT 02</span><h3>Visitor Counter System</h3><div class="tags"><span>Arduino</span><span>Sensor</span><span>LCD</span></div></div></article>
+</div><p class="hint">Click a project card to view its background, objective, contribution, learning, and result.</p></div></main>
+
+<div id="projectModal" class="modal" onclick="backdropClose(event)"><div class="modalBox"><div class="modalHead"><h2 id="modalTitle"></h2><button class="close" onclick="closeModal()" aria-label="Close">×</button></div><div class="modalBody" id="modalBody"></div></div></div>
+<script>
+const projects={
+pcb:{
+title:"PCB Minimum System", image:"project-pcb.png",
+background:"Project ini berfokus pada perancangan PCB minimum system sebagai bagian dari proses belajar elektronika dan desain rangkaian.",
+objective:"Membuat rancangan PCB yang memuat komponen dan jalur rangkaian dalam satu layout yang lebih terstruktur.",
+contribution:"Melakukan penyusunan komponen dan perancangan jalur pada layout PCB menggunakan KiCad.",
+learning:"Mempelajari penggunaan KiCad, penempatan komponen, perancangan jalur PCB, serta memahami hubungan antara skematik dan layout.",
+result:"Menghasilkan rancangan layout PCB minimum system yang dapat digunakan sebagai dasar untuk pembuatan PCB."
+},
+visitor:{
+title:"Visitor Counter System", image:"project-visitor.png",
+background:"Project ini berfokus pada pembuatan sistem penghitung pengunjung berbasis Arduino dengan memanfaatkan sensor dan beberapa komponen output.",
+objective:"Membuat sistem yang dapat menghitung pengunjung dan menampilkan jumlahnya pada LCD.",
+contribution:"Menyusun rangkaian berbasis Arduino yang terhubung dengan sensor, LCD, LED, dan buzzer serta mengatur alur penghitungannya.",
+learning:"Mempelajari penggunaan Arduino, sensor, LCD, serta cara menghubungkan beberapa komponen agar dapat bekerja sebagai satu sistem.",
+result:"Menghasilkan prototype sistem penghitung pengunjung dengan jumlah pengunjung yang ditampilkan melalui LCD."
+}};
+function openModal(key){
+ const p=projects[key];
+ document.getElementById("modalTitle").textContent=p.title;
+ document.getElementById("modalBody").innerHTML=
+ `<img class="modalImage" src="${p.image}" alt="${p.title}">
+ <h4>Background</h4><p>${p.background}</p>
+ <h4>Objective</h4><p>${p.objective}</p>
+ <h4>Specific Contribution</h4><p>${p.contribution}</p>
+ <h4>Learning</h4><p>${p.learning}</p>
+ <h4>Result</h4><p>${p.result}</p>`;
+ document.getElementById("projectModal").classList.add("open");
+ document.body.style.overflow="hidden";
+}
+function closeModal(){document.getElementById("projectModal").classList.remove("open");document.body.style.overflow=""}
+function backdropClose(e){if(e.target.id==="projectModal")closeModal()}
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});
+</script></body></html>
